@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 \"${PLUGIN_ROOT}/hooks/gobb-resolver.py\" --session-start",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
