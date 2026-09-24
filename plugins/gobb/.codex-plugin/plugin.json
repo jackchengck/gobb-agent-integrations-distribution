@@ -1,0 +1,20 @@
+{
+  "name": "gobb",
+  "version": "0.2.0+codex.20260917142153",
+  "description": "Uses Gobb to offer documentation setup, load verified context, and proactively maintain durable repository documentation.",
+  "author": {
+    "name": "Gobb"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Gobb",
+    "shortDescription": "Set up and maintain verified documentation.",
+    "longDescription": "Offers optional Gobb onboarding when durable documentation is relevant, then loads deterministic context, follows repository instructions, and honors exact revocable auto-log approval.",
+    "developerName": "Gobb",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Use Gobb to offer setup when needed, follow verified context, and maintain durable repository documentation."
+    ]
+  }
+}
