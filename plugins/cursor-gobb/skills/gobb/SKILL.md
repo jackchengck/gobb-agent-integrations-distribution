@@ -9,7 +9,7 @@ Use the Gobb CLI as the only authority for Gobb repository, context, documentati
 
 ## Verified CLI invocation
 
-All `gobb ...` commands below describe CLI arguments, not a shell `PATH` lookup. Obtain the absolute path of the `SKILL.md` Cursor actually loaded for this task, append `scripts/gobb-resolver.py` to that file's directory, and invoke `/usr/bin/python3 -I -B` with this absolute script path followed by the Gobb arguments. This must work independently of the project working directory. Never execute a relative `scripts/gobb-resolver.py`, run bare `gobb`, guess a cache path, pass a caller-selected profile, or fall back to `PATH`. The resolver uses only the owner-only Desktop locator and verified v2 profile. If the loaded Skill path, installed script, or verified CLI is unavailable, report Repair/Update and stop Gobb calls.
+Use the installed global `gobb` command directly. For every `gobb ...` command below, invoke `gobb --cwd <canonical-active-folder> <arguments>`, replacing `<canonical-active-folder>` with the canonical absolute path of the repository for this task and `<arguments>` with the shown Gobb arguments. Normal resolution of the registered global command is the primary entry, not a fallback. Ordinary local context commands do not require Desktop, a Desktop profile, or Hub login. If the CLI is unavailable or the installation conflicts, report Update/Repair once and stop Gobb calls. Do not invoke the bundled resolver, guess a cache or executable path, scan for another executable, or use an alternate resolver/cache/PATH executable fallback. Preserve the task's repository boundary; after changing repositories, use that repository's canonical folder and fresh Start facts.
 
 ## Start
 
