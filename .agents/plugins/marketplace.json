@@ -1,0 +1,32 @@
+{
+  "name": "gobb",
+  "interface": {
+    "displayName": "Gobb"
+  },
+  "plugins": [
+    {
+      "name": "gobb-global-entry",
+      "source": {
+        "source": "local",
+        "path": "./plugins/gobb-global-entry"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "gobb",
+      "source": {
+        "source": "local",
+        "path": "./plugins/gobb"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
