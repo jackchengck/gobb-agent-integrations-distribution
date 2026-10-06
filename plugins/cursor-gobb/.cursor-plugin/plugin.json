@@ -1,0 +1,10 @@
+{
+  "name": "gobb",
+  "version": "0.2.1-cursor.4",
+  "description": "Use Gobb's verified context and documentation workflow.",
+  "author": {
+    "name": "Gobb"
+  },
+  "skills": "skills/",
+  "logo": "assets/gobb-icon.svg"
+}
