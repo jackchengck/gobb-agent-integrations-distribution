@@ -1,0 +1,15 @@
+{
+  "name": "gobb",
+  "owner": {
+    "name": "Gobb"
+  },
+  "description": "Official Gobb integrations for supported AI coding agents.",
+  "plugins": [
+    {
+      "name": "gobb",
+      "source": "./plugins/gobb",
+      "description": "Uses Gobb to offer documentation setup, load verified context, and proactively maintain durable repository documentation.",
+      "version": "0.2.1-claude.2"
+    }
+  ]
+}

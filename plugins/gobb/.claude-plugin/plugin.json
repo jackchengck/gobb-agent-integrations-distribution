@@ -1,0 +1,9 @@
+{
+  "name": "gobb",
+  "icon": "./assets/gobb-app-icon-light.svg",
+  "version": "0.2.1-claude.2",
+  "description": "Uses Gobb to offer documentation setup, load verified context, and proactively maintain durable repository documentation.",
+  "author": {
+    "name": "Gobb"
+  }
+}
