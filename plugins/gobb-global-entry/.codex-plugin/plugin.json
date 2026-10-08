@@ -1,0 +1,24 @@
+{
+  "name": "gobb-global-entry",
+  "version": "0.2.2",
+  "description": "Uses Gobb to offer documentation setup, load verified context, and proactively maintain durable repository documentation.",
+  "author": {
+    "name": "Gobb"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "logo": "./assets/gobb-app-icon-light.svg",
+    "logoDark": "./assets/gobb-app-icon-dark.svg",
+    "composerIcon": "./assets/gobb-app-icon-light.svg",
+    "composerIconDark": "./assets/gobb-app-icon-dark.svg",
+    "displayName": "Gobb",
+    "shortDescription": "Set up and maintain verified documentation.",
+    "longDescription": "Offers optional Gobb onboarding when durable documentation is relevant, then loads deterministic context, follows repository instructions, and honors exact revocable auto-log approval.",
+    "developerName": "Gobb",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Use Gobb to offer setup when needed, follow verified context, and maintain durable repository documentation."
+    ]
+  }
+}

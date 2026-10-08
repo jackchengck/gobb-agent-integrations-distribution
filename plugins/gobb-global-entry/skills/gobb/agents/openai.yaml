@@ -1,0 +1,4 @@
+interface:
+  display_name: "Gobb"
+  short_description: "Set up and maintain verified documentation"
+  default_prompt: "Use $gobb to offer setup when needed, follow verified context, and maintain durable repository documentation."
