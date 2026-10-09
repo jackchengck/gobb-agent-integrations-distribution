@@ -1,0 +1,43 @@
+#!/bin/sh
+# Git Flow guard; release/deployment authorization still comes from the user.
+set -eu
+zero=0000000000000000000000000000000000000000
+fail() { printf 'Git Flow: %s\n' "$*" >&2; exit 1; }
+while read -r local_ref local_oid remote_ref remote_oid; do
+  case "$remote_ref" in
+    refs/heads/*)
+      branch=${remote_ref#refs/heads/}
+      case "$branch" in
+        main|develop|feature/?*|release/?*|hotfix/?*|support/?*) ;;
+        *) fail "use feature/*, release/*, hotfix/* or support/* (received $branch)" ;;
+      esac
+      if [ "$local_oid" = "$zero" ]; then
+        case "$branch" in main|develop) fail "cannot delete $branch" ;; esac
+        continue
+      fi
+      if [ "$remote_oid" != "$zero" ]; then
+        git cat-file -e "$remote_oid^{commit}" 2>/dev/null || fail "fetch the remote before pushing $branch"
+        git merge-base --is-ancestor "$remote_oid" "$local_oid" || fail "non-fast-forward update of $branch"
+      fi
+      case "$branch" in
+        main|develop)
+          if [ "$remote_oid" = "$zero" ]; then
+            if [ "$branch" = develop ]; then
+              [ "$local_oid" = "$(git rev-parse refs/heads/main)" ] || fail "initial develop must match main"
+            fi
+            continue
+          fi
+          for commit in $(git rev-list --first-parent "$remote_oid..$local_oid"); do
+            set -- $(git rev-list --parents -n 1 "$commit")
+            [ "$#" -ge 3 ] || fail "direct commit $commit on $branch; merge with --no-ff instead"
+          done
+          ;;
+      esac
+      ;;
+    refs/tags/*)
+      [ "$local_oid" != "$zero" ] || fail "release tags are immutable"
+      [ "$remote_oid" = "$zero" ] || [ "$remote_oid" = "$local_oid" ] || fail "release tags are immutable"
+      git merge-base --is-ancestor "$local_oid" refs/heads/main || fail "tag must refer to a commit already in main"
+      ;;
+  esac
+done
